@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chena Keerthana | Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+
+  --primary: #6366f1;
+  --secondary: #8b5cf6;
+
+  --success: #10b981;
+  --border: #e2e8f0;
+  --soft: #eef2ff;
+  --shadow: rgba(15, 23, 42, 0.12);
+}
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(
+    135deg,
+    #f8fafc 0%,
+    #eef2ff 40%,
+    #f5f3ff 100%
+  );
+  color: var(--text);
+  line-height: 1.6;
+}
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 16px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      color: var(--primary);
+      font-size: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    section {
+      max-width: 1150px;
+      margin: auto;
+      padding: 90px 22px;
+    }
+
+    .hero {
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: rgba(99, 102, 241, 0.15);
+  border-radius: 50%;
+  filter: blur(100px);
+  top: 50px;
+  right: 50px;
+  z-index: -1;
+}
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid #c7d2fe;
+      border-radius: 999px;
+      color: var(--primary);
+      background: var(--soft);
+      margin-bottom: 22px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .headline {
+      color: var(--muted);
+      font-size: 19px;
+      max-width: 650px;
+      margin-bottom: 28px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      font-weight: 700;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px var(--shadow);
+    }
+
+    .profile-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 30px;
+      box-shadow: 0 25px 50px var(--shadow);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .profile-circle {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 38px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+
+    .profile-card p {
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .stats {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .stat {
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+    }
+
+    .section-title {
+      font-size: 34px;
+      margin-bottom: 14px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin-bottom: 35px;
+      max-width: 720px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px;
+      transition: 0.3s;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--secondary);
+      box-shadow: 0 18px 35px var(--shadow);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .skill-category h3 {
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      background: var(--soft);
+      border: 1px solid #c7d2fe;
+      color: var(--primary);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .project-card h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .tech {
+      color: var(--secondary);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .project-card ul {
+      padding-left: 20px;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .project-card li {
+      margin-bottom: 8px;
+    }
+
+    .simple-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .list-item {
+      padding: 18px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: 0.3s;
+      font-weight: 600;
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.05);
+    }
+
+    .list-item:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 28px var(--shadow);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .contact-card {
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: white;
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.05);
+    }
+
+    .contact-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: white;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: 0.8s ease;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-content,
+      .projects-grid,
+      .skills-grid,
+      .simple-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-card {
+        animation: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 62px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 22px;
+        display: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      section {
+        padding: 75px 18px;
+      }
+
+      .hero {
+        padding-top: 110px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-container">
+      <a href="#home" class="logo">CK</a>
+      <button class="menu-btn" id="menuBtn">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#highlights" class="nav-link">Highlights</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#internships" class="nav-link">Internships</a></li>
+        <li><a href="#certifications" class="nav-link">Certifications</a></li>
+        <li><a href="#achievements" class="nav-link">Achievements</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="fade-in">
+        <span class="badge">B.Tech AIML Student | CGPA 9.18/10</span>
+
+        <h1>
+          Hi, I am <span class="gradient-text">Chena Keerthana</span>
+        </h1>
+
+        <p class="headline">
+          AI/ML and Full-Stack Developer building data-driven software systems,
+          predictive models, backend APIs, and clean analytics dashboards.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="resume.pdf" download class="btn btn-primary">Download Resume</a>
+          <a href="https://github.com/Keerthana58-stud" target="_blank" class="btn">GitHub</a>
+          <a href="https://linkedin.com/in/chennakeerthana" target="_blank" class="btn">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="profile-card fade-in">
+        <div class="profile-circle">CK</div>
+
+        <h2>Chena Keerthana</h2>
+        <p>B.Tech AIML Student</p>
+        <p>Malla Reddy Engineering College for Women, Hyderabad</p>
+
+        <div class="stats">
+          <div class="stat"><strong>CGPA:</strong> 9.18/10</div>
+          <div class="stat"><strong>Focus:</strong> AI/ML, Backend, Dashboards</div>
+          <div class="stat"><strong>Goal:</strong> Building practical software solutions</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="fade-in">
+      <h2 class="section-title">About Me</h2>
+
+      <p class="section-subtitle">
+        I am a B.Tech AIML student interested in data-driven software systems,
+        machine learning, backend development, and dashboards. I enjoy building
+        practical applications that combine clean user interfaces, reliable APIs,
+        and intelligent analytics.
+      </p>
+
+      <div class="card">
+        <p>
+          My work focuses on creating full-stack applications, predictive ML
+          workflows, academic analytics systems, and scalable backend services.
+          I am continuously improving my skills in AI/ML, cloud tools, databases,
+          and modern software development.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="highlights">
+    <div class="fade-in">
+      <h2 class="section-title">Resume Highlights</h2>
+
+      <p class="section-subtitle">
+        Quick profile summary for recruiters and hiring teams.
+      </p>
+
+      <div class="simple-grid">
+        <div class="list-item">CGPA: 9.18 / 10</div>
+        <div class="list-item">2 Full Stack Projects</div>
+        <div class="list-item">2 Internships Completed</div>
+        <div class="list-item">Internal Smart India Hackathon (SIH) Participant</div>
+        <div class="list-item">AI/ML + Full Stack Development</div>
+        <div class="list-item">Python, FastAPI, React, MongoDB</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="fade-in">
+      <h2 class="section-title">Skills</h2>
+
+      <p class="section-subtitle">
+        Technologies and tools I use to build software and ML solutions.
+      </p>
+
+      <div class="skills-grid">
+        <div class="card skill-category">
+          <h3>Languages</h3>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
+            <span class="tag">SQL</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">C</span>
+          </div>
+        </div>
+
+        <div class="card skill-category">
+          <h3>Frameworks</h3>
+          <div class="tags">
+            <span class="tag">FastAPI</span>
+            <span class="tag">Flask</span>
+            <span class="tag">React.js</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Streamlit</span>
+          </div>
+        </div>
+
+        <div class="card skill-category">
+          <h3>Tools</h3>
+          <div class="tags">
+            <span class="tag">MongoDB</span>
+            <span class="tag">Redis</span>
+            <span class="tag">Kafka</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+
+        <div class="card skill-category">
+          <h3>AI/ML</h3>
+          <div class="tags">
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">NLP</span>
+            <span class="tag">Predictive Modeling</span>
+            <span class="tag">Azure ML</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="fade-in">
+      <h2 class="section-title">Projects</h2>
+
+      <p class="section-subtitle">
+        Selected projects that show my full-stack and AI/ML development skills.
+      </p>
+
+      <div class="projects-grid">
+        <div class="card project-card">
+          <h3>EduMentor — AI-Based Academic Risk Detection System</h3>
+          <p class="tech">FastAPI, React, MongoDB, NLP</p>
+
+          <ul>
+            <li>Developed a full-stack academic analytics platform.</li>
+            <li>Built predictive models to detect academic risk levels.</li>
+            <li>Designed APIs for student analytics and recommendation workflows.</li>
+          </ul>
+
+          <a href="https://github.com/Keerthana58-stud/EduMentor" target="_blank" class="btn btn-primary">
+            View GitHub
+          </a>
+        </div>
+
+        <div class="card project-card">
+          <h3>CommerceMesh — Scalable E-commerce Platform</h3>
+          <p class="tech">Flask, React, MongoDB, Redis, Kafka</p>
+
+          <ul>
+            <li>Built REST APIs for authentication, products, and orders.</li>
+            <li>Integrated Redis caching for faster data access.</li>
+            <li>Designed Kafka-based event-driven workflows.</li>
+          </ul>
+
+          <a href="https://github.com/Keerthana58-stud/CommerceMesh" target="_blank" class="btn btn-primary">
+            View GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="internships">
+    <div class="fade-in">
+      <h2 class="section-title">Internships</h2>
+
+      <p class="section-subtitle">
+        Practical learning experience in AI, ML, and enterprise platforms.
+      </p>
+
+      <div class="simple-grid">
+        <div class="list-item">Azure ML Intern — Edunet Foundation</div>
+        <div class="list-item">Machine Learning Intern — Skillfield</div>
+        <div class="list-item">ServiceNow Virtual Internship Program</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="fade-in">
+      <h2 class="section-title">Certifications</h2>
+
+      <p class="section-subtitle">
+        Focused certifications relevant to AI/ML, software development, data science, and cybersecurity.
+      </p>
+
+      <div class="simple-grid">
+        <div class="list-item">Python Essentials — Cisco Networking Academy</div>
+        <div class="list-item">Introduction to Modern AI — Cisco Networking Academy</div>
+        <div class="list-item">Apply AI: Analyze Customer Reviews — Cisco Networking Academy</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <div class="fade-in">
+      <h2 class="section-title">Achievements & Hackathons</h2>
+
+      <p class="section-subtitle">
+        Participation in innovation-focused events and problem-solving challenges.
+      </p>
+
+      <div class="simple-grid">
+        <div class="list-item">Internal Smart India Hackathon (SIH) Participant</div>
+        <div class="list-item">MSME Hackathon Participant</div>
+        <div class="list-item">Techknow 2.0 24-Hour Hackathon & Tech Summit Participant</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="fade-in">
+      <h2 class="section-title">Contact</h2>
+
+      <p class="section-subtitle">
+        Open to internships, project collaborations, and software development opportunities.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <span>Email</span>
+          <a href="mailto:chennakeerthana35@gmail.com">chennakeerthana35@gmail.com</a>
+        </div>
+
+        <div class="contact-card">
+          <span>LinkedIn</span>
+          <a href="https://linkedin.com/in/chennakeerthana" target="_blank">
+            linkedin.com/in/chennakeerthana
+          </a>
+        </div>
+
+        <div class="contact-card">
+          <span>GitHub</span>
+          <a href="https://github.com/Keerthana58-stud" target="_blank">
+            github.com/Keerthana58-stud
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Chena Keerthana. Built with HTML, CSS, and JavaScript.</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+    const links = document.querySelectorAll(".nav-link");
+    const sections = document.querySelectorAll("section");
+    const fadeElements = document.querySelectorAll(".fade-in");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    links.forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+      });
+    });
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 130;
+
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      links.forEach(link => {
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    fadeElements.forEach(element => {
+      observer.observe(element);
+    });
+  </script>
+</body>
+</html>
